@@ -1,7 +1,7 @@
 # k-tools-tinh-diem
 Mã nguồn mở Python tính điểm cho học sinh THPT
 
-Xin chào, đây là một phần mềm tính điểm sử dụng Python và thư viện Customtkinter. Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh - Đăk Nông khóa 2021 - 2024. Phần mềm này hy vọng sẽ trở thành công cụ hữu ích giúp các bạn dễ dàng tính toán và thống kê điểm số. Ngoài ra, vì là mã nguồn mở nên hi vọng sẽ giúp các bạn phần nào đó trong việc tiếp cận ngôn ngữ lập trình dễ dàng hơn. Nếu còn có bất cứ thắc mắc gì về ứng dụng, báo lỗi.
+Xin chào, đây là một phần mềm tính điểm sử dụng Python và thư viện Customtkinter. Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh - Đăk Nông khóa 2021 - 2024. Phần mềm này hy vọng sẽ trở thành công cụ hữu ích giúp các bạn dễ dàng tính toán và thống kê điểm số. Ngoài ra, vì là mã nguồn mở nên hi vọng sẽ giúp các bạn phần nào đó trong việc tiếp cận ngôn ngữ lập trình dễ dàng hơn. Nếu còn có bất cứ thắc mắc gì về ứng dụng, báo lỗi vui lòng liên hệ với tôi tại Zalo: 0387290231
 Changelog: 07-10-2023
 
 # Chức năng chính
