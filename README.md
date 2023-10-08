@@ -7,7 +7,7 @@ Xin chào, đây là một phần mềm tính điểm sử dụng Python và th�
     1. Xếp loại học sinh (theo thông tư 22)
     2. Tính điểm trung bình môn
     3. Tính điểm trung bình năm
-    4. Tình điểm xét tốt nghiệp
+    4. Tính điểm xét tốt nghiệp
 
 # Hướng Dẫn Sử Dụng
 1. Cài đặt Python tại website https://www.python.org/ phiên bản mới nhất
@@ -61,4 +61,3 @@ pyinstaller --onefile your_script.py
 Trong đó, `your_script.py` là tên của file Python bạn muốn chuyển đổi. Lệnh trên sẽ tạo ra một file .exe trong thư mục `dist` trong thư mục hiện tại.
 
 Lưu ý: Nếu mã nguồn của bạn sử dụng các thư viện không phải là phần của thư viện chuẩn Python, bạn cần đảm bảo rằng tất cả các thư viện này cũng đã được cài đặt trên máy tính nơi bạn chạy PyInstaller.
-
