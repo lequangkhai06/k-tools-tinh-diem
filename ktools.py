@@ -9,7 +9,7 @@ def Loading():
     root.geometry('800x600')
     root.after(0, lambda: root.state('zoomed'))
     logo_path = ctk.CTkImage(Image.open(
-        "Images/logo.png"), size=(270, 270))
+        "Images/logo.png"), size=(300, 300))
     logo = ctk.CTkLabel(root, image=logo_path, text="")
     logo.pack(pady=150)
     progress = ctk.CTkProgressBar(
@@ -17,11 +17,13 @@ def Loading():
     progress.pack()
     progress.set(0)
     progress.start()
-    ctk.CTkLabel(root, text="Đang tải dữ liệu...",
-                 font=('Arial', 15)).pack(pady=10)
-    ctk.CTkLabel(root, text="© 2023 By LEQUANGKHAI",
-                 font=('Helvetica', 10)).pack(pady=2, side="bottom")
-    root.after(2000, root.destroy)
+    loadingText = ctk.CTkLabel(root, text="Đang tải dữ liệu...",
+                               font=('Arial', 14))
+    loadingText.pack(pady=20)
+    copyrightText = ctk.CTkLabel(root, text="© 2023 By LEQUANGKHAI",
+                                 font=('Arial', 10))
+    copyrightText.pack(pady=2, side="bottom")
+    root.after(3000, root.destroy)
     root.mainloop()
 
 
@@ -46,7 +48,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
         # Thêm widgets vào tabs
         self.label1 = ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), text="", anchor="center")
-        # self.label1.grid(sticky='e')
+        self.label1.grid(row=0, column=0, sticky='nsew')
         self.label2 = ctk.CTkLabel(master=self.tab("TÍNH ĐIỂM TB NĂM"))
         self.label2.grid(row=0, column=0)
         self.label3 = ctk.CTkLabel(master=self.tab(
@@ -66,11 +68,11 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.is_on = True
         self.lights_control = ctk.CTkFrame(self)
         self.lights_control.grid(row=0, column=0, rowspan=1, padx=(
-            5, 5), pady=(10, 10), sticky="new")
+            5, 5), pady=(10, 10), sticky="nsew")
         self.dark_theme_switch = ctk.CTkSwitch(
             master=self.lights_control, text="Mặc định", command=self.dark_theme)
         self.dark_theme_switch.grid(
-            row=0, column=0, pady=10, padx=20, sticky="n")
+            row=0, column=0, pady=10, padx=20, sticky="nsew")
         # đóng phần mềm
         ctk.CTkButton(master=self, image=offIcon, text="Đóng phần mềm", command=self.close_window,
                       fg_color="#fff", text_color="#000", hover_color="#fff", width=0).grid(pady=10, padx=10)
@@ -80,25 +82,25 @@ class CongCuTinhDiem(ctk.CTkTabview):
             row=0, column=0, padx=10, pady=10)
         self.entry1 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), placeholder_text="Ví dụ: (8 + 7 + 9) => 24")
-        self.entry1.grid(row=0, column=1)
+        self.entry1.grid(row=0, column=1, sticky='nsew')
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), text="Điểm kiểm tra giữa kỳ").grid(
-            row=1, column=0, padx=10, pady=10, sticky="ew")
+            row=1, column=0, padx=10, pady=10, sticky="nsew")
         self.entry2 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), placeholder_text="0")
         self.entry2.grid(row=1, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), text="Điểm kiểm tra cuối kỳ").grid(
-            row=2, column=0, padx=10, pady=10, sticky="ew")
+            row=2, column=0, padx=10, pady=10, sticky="nsew")
         self.entry3 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), placeholder_text="0")
         self.entry3.grid(row=2, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), text="Tổng số lần tham gia kiểm tra 15p / điểm miệng").grid(
-            row=3, column=0, padx=10, pady=10, sticky="ew")
+            row=3, column=0, padx=10, pady=10, sticky="nsew")
         self.entry4 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), placeholder_text="Ví dụ: 3 lần => 3")
         self.entry4.grid(row=3, column=1)
@@ -117,14 +119,14 @@ class CongCuTinhDiem(ctk.CTkTabview):
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB NĂM"), text="Điểm trung bình học kỳ 1", anchor="center").grid(
-            row=0, column=0, padx=10, pady=10)
+            row=0, column=0, padx=10, pady=10, sticky="nsew")
         self.entry5 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM TB NĂM"), placeholder_text="0")
         self.entry5.grid(row=0, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB NĂM"), text="Điểm trung bình học kỳ 2").grid(
-            row=1, column=0, padx=10, pady=10, sticky="ew")
+            row=1, column=0, padx=10, pady=10, sticky="nsew")
         self.entry6 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM TB NĂM"), placeholder_text="0")
         self.entry6.grid(row=1, column=1)
@@ -154,56 +156,56 @@ class CongCuTinhDiem(ctk.CTkTabview):
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: Tin học").grid(
-            row=1, column=0, padx=10, pady=10, sticky="ew")
+            row=1, column=0, padx=10, pady=10, sticky="nsew")
         self.entry8 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry8.grid(row=1, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: Ngữ văn").grid(
-            row=2, column=0, padx=10, pady=10, sticky="ew")
+            row=2, column=0, padx=10, pady=10, sticky="nsew")
         self.entry9 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry9.grid(row=2, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: Lịch sử").grid(
-            row=3, column=0, padx=10, pady=10, sticky="ew")
+            row=3, column=0, padx=10, pady=10, sticky="nsew")
         self.entry10 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry10.grid(row=3, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: Địa lí").grid(
-            row=4, column=0, padx=10, pady=10, sticky="ew")
+            row=4, column=0, padx=10, pady=10, sticky="nsew")
         self.entry11 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry11.grid(row=4, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: Ngoại ngữ").grid(
-            row=5, column=0, padx=10, pady=10, sticky="ew")
+            row=5, column=0, padx=10, pady=10, sticky="nsew")
         self.entry12 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry12.grid(row=5, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: GDCD").grid(
-            row=6, column=0, padx=10, pady=10, sticky="ew")
+            row=6, column=0, padx=10, pady=10, sticky="nsew")
         self.entry13 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry13.grid(row=6, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: Công nghệ").grid(
-            row=7, column=0, padx=10, pady=10, sticky="ew")
+            row=7, column=0, padx=10, pady=10, sticky="nsew")
         self.entry14 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry14.grid(row=7, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="Điểm trung bình: GDQP").grid(
-            row=8, column=0, padx=10, pady=10, sticky="ew")
+            row=8, column=0, padx=10, pady=10, sticky="nsew")
         self.entry15 = ctk.CTkEntry(master=self.tab(
             "XẾP LOẠI HỌC SINH"), placeholder_text="0")
         self.entry15.grid(row=8, column=1)
@@ -220,7 +222,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
 
         # VỀ PHẦN MỀM: TAB 4
         textbox = ctk.CTkTextbox(master=self.tab(
-            "VỀ PHẦN MỀM"), width=600, corner_radius=15)
+            "VỀ PHẦN MỀM"), width=600, height=300, corner_radius=15)
         text = """
         Xin chào, đây là một phần mềm tính điểm sử dụng Python và thư viện Customtkinter.
         Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh - Đăk Nông khóa 2021 - 2024.
@@ -245,49 +247,49 @@ class CongCuTinhDiem(ctk.CTkTabview):
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm môn Ngữ văn:").grid(
-            row=1, column=0, padx=10, pady=10, sticky="ew")
+            row=1, column=0, padx=10, pady=10, sticky="nsew")
         self.entry17 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry17.grid(row=1, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm môn Ngoại ngữ:").grid(
-            row=2, column=0, padx=10, pady=10, sticky="ew")
+            row=2, column=0, padx=10, pady=10, sticky="nsew")
         self.entry18 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry18.grid(row=2, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm môn Vật lí (hoặc Lịch sử):").grid(
-            row=3, column=0, padx=10, pady=10, sticky="ew")
+            row=3, column=0, padx=10, pady=10, sticky="nsew")
         self.entry19 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry19.grid(row=3, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm môn Hóa học (hoặc Địa lí):").grid(
-            row=4, column=0, padx=10, pady=10, sticky="ew")
+            row=4, column=0, padx=10, pady=10, sticky="nsew")
         self.entry20 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry20.grid(row=4, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm môn Sinh học (hoặc GDCD):").grid(
-            row=5, column=0, padx=10, pady=10, sticky="ew")
+            row=5, column=0, padx=10, pady=10, sticky="nsew")
         self.entry21 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry21.grid(row=5, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm trung bình cả năm lớp 12:").grid(
-            row=6, column=0, padx=10, pady=10, sticky="ew")
+            row=6, column=0, padx=10, pady=10, sticky="nsew")
         self.entry22 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry22.grid(row=6, column=1)
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm khuyến khích (nếu có):").grid(
-            row=7, column=0, padx=10, pady=10, sticky="ew")
+            row=7, column=0, padx=10, pady=10, sticky="nsew")
         self.entry23 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry23.grid(row=7, column=1)
@@ -295,7 +297,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
 
         ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập điểm ưu tiên (nếu có):").grid(
-            row=8, column=0, padx=10, pady=10, sticky="ew")
+            row=8, column=0, padx=10, pady=10, sticky="nsew")
         self.entry24 = ctk.CTkEntry(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), placeholder_text="0")
         self.entry24.grid(row=8, column=1)
@@ -324,7 +326,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
             so_luong_bai_kiem_tra = float(self.entry4.get())
             if (tong_diem_thuong_xuyen > 40 or diem_giua_ky > 10 or so_luong_bai_kiem_tra < 1 or tong_diem_thuong_xuyen < 0):
                 self.ket_qua_tb_mon.configure(
-                    text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10)
+                    text="Vui lòng nhập điểm hợp lệ.", corner_radius=10)
             else:
                 diemtbhk = (tong_diem_thuong_xuyen + 2 * diem_giua_ky +
                             3 * diem_hoc_ky) / (so_luong_bai_kiem_tra + 5)
@@ -332,7 +334,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
                     text=f"Điểm trung bình môn của bạn là: {round(diemtbhk, 1)}", corner_radius=10)
         except ValueError:
             self.ket_qua_tb_mon.configure(
-                text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10)
+                text="Vui lòng nhập điểm hợp lệ.", corner_radius=10)
 
     def func_tinh_diem_tb_nam_hoc(self):
         try:
@@ -340,14 +342,14 @@ class CongCuTinhDiem(ctk.CTkTabview):
             diem_hoc_ky_2 = float(self.entry6.get())
             if (diem_hoc_ky_1 > 10 or diem_hoc_ky_2 > 10 or diem_hoc_ky_1 < 0 or diem_hoc_ky_2 < 0):
                 self.ket_qua_tb_nam_hoc.configure(
-                    text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10)
+                    text="Vui lòng nhập điểm hợp lệ.", corner_radius=10)
             else:
                 diemtbnam = (diem_hoc_ky_1 + 2 * diem_hoc_ky_2) / 3
                 self.ket_qua_tb_nam_hoc.configure(
                     text=f"Điểm trung bình cả năm của bạn là: {round(diemtbnam,1)}", corner_radius=10)
         except ValueError:
             self.ket_qua_tb_nam_hoc.configure(
-                text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10)
+                text="Vui lòng nhập điểm hợp lệ.", corner_radius=10)
 
     def phan_loai_hoc_luc(self):
         try:
@@ -397,11 +399,11 @@ class CongCuTinhDiem(ctk.CTkTabview):
 
             else:
                 self.ket_qua_loai_hoc_sinh.configure(
-                    text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10, pady=20)
+                    text="Vui lòng nhập điểm hợp lệ.", corner_radius=10, pady=20)
 
         except ValueError:
             self.ket_qua_loai_hoc_sinh.configure(
-                text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10, pady=20)
+                text="Vui lòng nhập điểm hợp lệ.", corner_radius=10, pady=20)
 
     def func_tinh_diem_tot_nghiep_thpt(self):
         try:
@@ -418,18 +420,18 @@ class CongCuTinhDiem(ctk.CTkTabview):
             # ============================================= #
             if any(diem < 0 for diem in [toan, van, ngoai_ngu, mon_phu_1, mon_phu_2, mon_phu_3, diem_tb_lop_12, diem_khuyen_khich, diem_uu_tien]):
                 self.ket_qua_xet_tot_nghiep_thpt.configure(
-                    text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10, pady=20)
+                    text="Vui lòng nhập điểm hợp lệ.", corner_radius=10, pady=20)
             else:
                 diem_to_hop = (mon_phu_1+mon_phu_2+mon_phu_3)/3
                 diemtn = round(((diem_to_hop+toan+van+ngoai_ngu +
-                          diem_khuyen_khich)/4*7+diem_tb_lop_12*3)/10+diem_uu_tien, 2)
+                                 diem_khuyen_khich)/4*7+diem_tb_lop_12*3)/10+diem_uu_tien, 2)
                 if (any(diem <= 1 for diem in [toan, van, ngoai_ngu, mon_phu_1, mon_phu_2, mon_phu_3]) or diemtn < 5):
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
                         text=f"""
                         Bạn đã trượt tốt nghiệp có môn điểm liệt hoặc điểm tốt nghiệp dưới 5!!
                         Điểm xét tốt nghiệp của bạn là: {diemtn}
                         Bạn cần ít nhất {round(5-diemtn, 2)} điểm nữa để đỗ tốt nghiệp
-                        """, corner_radius=10)
+                        """, corner_radius=10, text_color="#dc3545")
                 else:
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
                         text=f"""
@@ -438,7 +440,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
                     """, corner_radius=10)
         except ValueError:
             self.ket_qua_xet_tot_nghiep_thpt.configure(
-                text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10, pady=20)
+                text="Vui lòng nhập điểm hợp lệ.", corner_radius=10, pady=20)
 
     def func_tinh_diem_tot_nghiep_gdtx(self):
         try:
@@ -455,18 +457,18 @@ class CongCuTinhDiem(ctk.CTkTabview):
             # ============================================= #
             if any(diem < 0 for diem in [toan, van, ngoai_ngu, mon_phu_1, mon_phu_2, mon_phu_3, diem_tb_lop_12, diem_khuyen_khich, diem_uu_tien]):
                 self.ket_qua_xet_tot_nghiep_thpt.configure(
-                    text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10, pady=20)
+                    text="Vui lòng nhập điểm hợp lệ.", corner_radius=10, pady=20)
             else:
                 diem_to_hop = (mon_phu_1+mon_phu_2+mon_phu_3)/3
                 diemtn = round((((diem_to_hop+toan+van)/3 + diem_khuyen_khich/4)
-                          * 7+diem_tb_lop_12*3)/10+diem_uu_tien, 2)
+                                * 7+diem_tb_lop_12*3)/10+diem_uu_tien, 2)
                 if (any(diem <= 1 for diem in [toan, van, ngoai_ngu, mon_phu_1, mon_phu_2, mon_phu_3]) or diemtn < 5):
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
                         text=f"""
-                        Bạn đã trượt tốt nghiệp có môn điểm liệt hoặc điểm tốt nghiệp dưới 5
+                        Bạn đã trượt tốt nghiệp có môn điểm liệt hoặc điểm tốt nghiệp dưới 5!!
                         Điểm xét tốt nghiệp của bạn là: {diemtn}
                         Bạn cần ít nhất {round(5-diemtn, 2)} điểm nữa để đỗ tốt nghiệp
-                        """, corner_radius=10)
+                        """, corner_radius=10, text_color="#dc3545")
                 else:
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
                         text=f"""
@@ -475,7 +477,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
                     """, corner_radius=10)
         except ValueError:
             self.ket_qua_xet_tot_nghiep_thpt.configure(
-                text="Vui lòng nhập điểm hợp lệ.", text_color="#dc3545", corner_radius=10, pady=20)
+                text="Vui lòng nhập điểm hợp lệ.", corner_radius=10, pady=20)
     # ====== ĐÓNG PHẦN MỀM ============ #
 
     def close_window(self):
@@ -499,13 +501,13 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.entry3.delete(0, 'end')
         self.entry4.delete(0, 'end')
         self.ket_qua_tb_mon.configure(
-            text="", text_color="#dc3545", corner_radius=10)
+            text="", corner_radius=10)
 
     def func_tinh_diem_tb_nam_hoc_reset(self):
         self.entry5.delete(0, 'end')
         self.entry6.delete(0, 'end')
         self.ket_qua_tb_nam_hoc.configure(
-            text="", text_color="#dc3545", corner_radius=10)
+            text="", corner_radius=10)
 
     def phan_loai_hoc_luc_reset(self):
         self.entry7.delete(0, 'end')
@@ -518,7 +520,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.entry14.delete(0, 'end')
         self.entry15.delete(0, 'end')
         self.ket_qua_loai_hoc_sinh.configure(
-            text="", text_color="#dc3545", corner_radius=10)
+            text="", corner_radius=10)
 
     def func_tinh_diem_tot_nghiep_thpt_reset(self):
         self.entry16.delete(0, 'end')
@@ -531,7 +533,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.entry23.delete(0, 'end')
         self.entry24.delete(0, 'end')
         self.ket_qua_xet_tot_nghiep_thpt.configure(
-            text="", text_color="#dc3545", corner_radius=10)
+            text="", corner_radius=10)
 
 
 def open_web():
