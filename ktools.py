@@ -4,6 +4,7 @@ from PIL import Image
 
 def Loading():
     root = ctk.CTk()
+    root.iconbitmap("favico.ico")
     root.title("Đang Tải Phần Mềm...")
     root.geometry('800x600')
     root.after(0, lambda: root.state('zoomed'))
@@ -12,7 +13,7 @@ def Loading():
     logo = ctk.CTkLabel(root, image=logo_path, text="")
     logo.pack(pady=150)
     progress = ctk.CTkProgressBar(
-        root, orientation='horizontal', mode='determinate', progress_color="#50C878", determinate_speed=1)
+        root, orientation='horizontal', mode='determinate', progress_color="#50C878", determinate_speed=1.5)
     progress.pack()
     progress.set(0)
     progress.start()
@@ -35,6 +36,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.update_idletasks()
         ctk.set_appearance_mode("system")
         ctk.set_default_color_theme("green")
+        self.root.iconbitmap("favico.ico")
         self.root.geometry("900x700")
         self.root.title("CÔNG CỤ TÍNH ĐIỂM - THPT TRƯỜNG CHINH ĐĂK NÔNG")
         self.root.after(0, lambda: root.state('zoomed'))
