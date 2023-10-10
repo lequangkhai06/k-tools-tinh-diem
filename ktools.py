@@ -2,7 +2,6 @@ import customtkinter as ctk
 import webbrowser
 from PIL import Image
 
-
 def Loading():
     root = ctk.CTk()
     root.title("Đang Tải Phần Mềm...")
@@ -13,7 +12,7 @@ def Loading():
     logo = ctk.CTkLabel(root, image=logo_path, text="")
     logo.pack(pady=150)
     progress = ctk.CTkProgressBar(
-        root, orientation='horizontal', mode='determinate', progress_color="#50C878")
+        root, orientation='horizontal', mode='determinate', progress_color="#50C878", determinate_speed=1)
     progress.pack()
     progress.set(0)
     progress.start()
