@@ -2,6 +2,7 @@ import customtkinter as ctk
 import webbrowser
 from PIL import Image
 
+
 def Loading():
     root = ctk.CTk()
     root.iconbitmap("favico.ico")
@@ -485,7 +486,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.root.destroy()
     # ====== CHUYỂN ĐỔI THEME ========= #
 
-    def dark_theme(self, event=None):
+    def dark_theme(self):
         if self.is_on:
             ctk.set_appearance_mode("Dark")
             self.dark_theme_switch.configure(text="Tối")
@@ -497,44 +498,38 @@ class CongCuTinhDiem(ctk.CTkTabview):
 
     # ========= HÀM XOÁ ĐIỂM ======== #
     def func_tinh_diem_tb_hoc_ky_reset(self):
-        self.entry1.delete(0, 'end')
-        self.entry2.delete(0, 'end')
-        self.entry3.delete(0, 'end')
-        self.entry4.delete(0, 'end')
-        self.ket_qua_tb_mon.configure(
-            text="", corner_radius=10)
+        entries = [self.entry1, self.entry2, self.entry3, self.entry4]
+
+        for entry in entries:
+            entry.delete(0, 'end')
+
+        self.ket_qua_tb_mon.configure(text="", corner_radius=10)
 
     def func_tinh_diem_tb_nam_hoc_reset(self):
-        self.entry5.delete(0, 'end')
-        self.entry6.delete(0, 'end')
-        self.ket_qua_tb_nam_hoc.configure(
-            text="", corner_radius=10)
+        entries = [self.entry5, self.entry6]
+
+        for entry in entries:
+            entry.delete(0, 'end')
+
+        self.ket_qua_tb_nam_hoc.configure(text="", corner_radius=10)
 
     def phan_loai_hoc_luc_reset(self):
-        self.entry7.delete(0, 'end')
-        self.entry8.delete(0, 'end')
-        self.entry9.delete(0, 'end')
-        self.entry10.delete(0, 'end')
-        self.entry11.delete(0, 'end')
-        self.entry12.delete(0, 'end')
-        self.entry13.delete(0, 'end')
-        self.entry14.delete(0, 'end')
-        self.entry15.delete(0, 'end')
-        self.ket_qua_loai_hoc_sinh.configure(
-            text="", corner_radius=10)
+        entries = [self.entry7, self.entry8, self.entry9, self.entry10,
+                   self.entry11, self.entry12, self.entry13, self.entry14, self.entry15]
+
+        for entry in entries:
+            entry.delete(0, 'end')
+
+        self.ket_qua_loai_hoc_sinh.configure(text="", corner_radius=10)
 
     def func_tinh_diem_tot_nghiep_thpt_reset(self):
-        self.entry16.delete(0, 'end')
-        self.entry17.delete(0, 'end')
-        self.entry18.delete(0, 'end')
-        self.entry19.delete(0, 'end')
-        self.entry20.delete(0, 'end')
-        self.entry21.delete(0, 'end')
-        self.entry22.delete(0, 'end')
-        self.entry23.delete(0, 'end')
-        self.entry24.delete(0, 'end')
-        self.ket_qua_xet_tot_nghiep_thpt.configure(
-            text="", corner_radius=10)
+        entries = [self.entry16, self.entry17, self.entry18, self.entry19,
+                   self.entry20, self.entry21, self.entry22, self.entry23, self.entry24]
+
+        for entry in entries:
+            entry.delete(0, 'end')
+
+        self.ket_qua_xet_tot_nghiep_thpt.configure(text="", corner_radius=10)
 
 
 def open_web():
