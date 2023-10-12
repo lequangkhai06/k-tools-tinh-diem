@@ -14,7 +14,7 @@ def Loading():
     logo = ctk.CTkLabel(root, image=logo_path, text="")
     logo.pack(pady=150)
     progress = ctk.CTkProgressBar(
-        root, orientation='horizontal', mode='determinate', progress_color="#50C878", determinate_speed=1.5)
+        root, orientation='horizontal', mode='determinate', progress_color="#50C878")
     progress.pack()
     progress.set(0)
     progress.start()
@@ -35,7 +35,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
         # config
         self.root = root
         self.update_idletasks()
-        ctk.set_appearance_mode("system")
+        ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("green")
         self.root.iconbitmap("favico.ico")
         self.root.geometry("900x700")
@@ -50,7 +50,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
         # Thêm widgets vào tabs
         self.label1 = ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), text="", anchor="center")
-        self.label1.grid(row=0, column=0, sticky='nsew')
+        self.label1.grid(row=0, column=0, sticky="nsew")
         self.label2 = ctk.CTkLabel(master=self.tab("TÍNH ĐIỂM TB NĂM"))
         self.label2.grid(row=0, column=0)
         self.label3 = ctk.CTkLabel(master=self.tab(
@@ -63,9 +63,11 @@ class CongCuTinhDiem(ctk.CTkTabview):
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="")
         self.label4.grid(row=0, column=0)
         # images
-        clearIcon = ctk.CTkImage(dark_image=Image.open("Images/clear.png"))
-        resultIcon = ctk.CTkImage(dark_image=Image.open("Images/result.png"))
-        offIcon = ctk.CTkImage(dark_image=Image.open("Images/turn-off.png"))
+        self.clearIcon = ctk.CTkImage(dark_image=Image.open("Images/clear.png"))
+        self.resultIcon = ctk.CTkImage(dark_image=Image.open("Images/result.png"))
+        self.offIcon = ctk.CTkImage(dark_image=Image.open("Images/turn-off.png"))
+        self.darkIcon = ctk.CTkImage(dark_image=Image.open("Images/night.png"))
+        self.lightIcon = ctk.CTkImage(dark_image=Image.open("Images/cloudy.png"))
         # chuyển theme
         self.is_on = True
         self.lights_control = ctk.CTkFrame(self)
@@ -75,8 +77,10 @@ class CongCuTinhDiem(ctk.CTkTabview):
             master=self.lights_control, text="Mặc định", command=self.dark_theme)
         self.dark_theme_switch.grid(
             row=0, column=0, pady=10, padx=20, sticky="nsew")
+        self.loadImage = ctk.CTkLabel(root, image=self.darkIcon, text="")
+        self.loadImage.pack(padx=(10, 10), pady=(10, 10))
         # đóng phần mềm
-        ctk.CTkButton(master=self, image=offIcon, text="Đóng phần mềm", command=self.close_window,
+        ctk.CTkButton(master=self, image=self.offIcon, text="Đóng phần mềm", command=self.close_window,
                       fg_color="#fff", text_color="#000", hover_color="#fff", width=0).grid(pady=10, padx=10)
         # ============ TÍNH ĐIỂM TRUNG BÌNH MÔN: TAB 1 ============= #
         ctk.CTkLabel(master=self.tab(
@@ -108,10 +112,10 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.entry4.grid(row=3, column=1)
 
         ctk.CTkButton(master=self.tab(
-            "TÍNH ĐIỂM TB MÔN"), image=clearIcon, text="Nhập lại", command=self.func_tinh_diem_tb_hoc_ky_reset, fg_color="#dc3545", hover_color="#FF0001").grid(row=4, column=0)
+            "TÍNH ĐIỂM TB MÔN"), image=self.clearIcon, text="Nhập lại", command=self.func_tinh_diem_tb_hoc_ky_reset, fg_color="#dc3545", hover_color="#FF0001").grid(row=4, column=0)
 
         ctk.CTkButton(master=self.tab(
-            "TÍNH ĐIỂM TB MÔN"), image=resultIcon, text="Xem kết quả", command=self.func_tinh_diem_tb_hoc_ky).grid(row=4, column=1)
+            "TÍNH ĐIỂM TB MÔN"), image=self.resultIcon, text="Xem kết quả", command=self.func_tinh_diem_tb_hoc_ky).grid(row=4, column=1)
 
         self.ket_qua_tb_mon = ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), text="")
@@ -134,10 +138,10 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.entry6.grid(row=1, column=1)
 
         ctk.CTkButton(master=self.tab(
-            "TÍNH ĐIỂM TB NĂM"), image=clearIcon, text="Nhập lại", command=self.func_tinh_diem_tb_nam_hoc_reset, fg_color="#dc3545", hover_color="#FF0001").grid(row=4, column=0)
+            "TÍNH ĐIỂM TB NĂM"), image=self.clearIcon, text="Nhập lại", command=self.func_tinh_diem_tb_nam_hoc_reset, fg_color="#dc3545", hover_color="#FF0001").grid(row=4, column=0)
 
         ctk.CTkButton(master=self.tab(
-            "TÍNH ĐIỂM TB NĂM"), image=resultIcon, text="Xem kết quả", command=self.func_tinh_diem_tb_nam_hoc).grid(row=4, column=1)
+            "TÍNH ĐIỂM TB NĂM"), image=self.resultIcon, text="Xem kết quả", command=self.func_tinh_diem_tb_nam_hoc).grid(row=4, column=1)
 
         self.ket_qua_tb_mon = ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM TB MÔN"), text="")
@@ -213,10 +217,10 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.entry15.grid(row=8, column=1)
 
         ctk.CTkButton(master=self.tab(
-            "XẾP LOẠI HỌC SINH"), text="Nhập lại", command=self.phan_loai_hoc_luc_reset, image=clearIcon, fg_color="#dc3545", hover_color="#FF0001").grid(row=10, column=0)
+            "XẾP LOẠI HỌC SINH"), text="Nhập lại", command=self.phan_loai_hoc_luc_reset, image=self.clearIcon, fg_color="#dc3545", hover_color="#FF0001").grid(row=10, column=0)
 
         ctk.CTkButton(master=self.tab(
-            "XẾP LOẠI HỌC SINH"), image=resultIcon, text="Xem kết quả", command=self.phan_loai_hoc_luc).grid(row=10, column=1)
+            "XẾP LOẠI HỌC SINH"), image=self.resultIcon, text="Xem kết quả", command=self.phan_loai_hoc_luc).grid(row=10, column=1)
 
         self.ket_qua_loai_hoc_sinh = ctk.CTkLabel(master=self.tab(
             "XẾP LOẠI HỌC SINH"), text="")
@@ -228,11 +232,10 @@ class CongCuTinhDiem(ctk.CTkTabview):
         text = """
         Xin chào, đây là một phần mềm tính điểm sử dụng Python và thư viện Customtkinter.
         Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh - Đăk Nông khóa 2021 - 2024.
-        Phần mềm này hy vọng sẽ trở thành công cụ hữu ích giúp các bạn dễ dàng tính toán và thống kê điểm số. 
+        Phần mềm này hy vọng sẽ trở thành công cụ hữu ích giúp các bạn dễ dàng tính toán, thống kê điểm số. 
         Ngoài ra, vì là mã nguồn mở nên hi vọng sẽ giúp các bạn phần nào đó trong việc tiếp cận ngôn ngữ lập trình dễ dàng hơn. 
-        Nếu còn có bất cứ thắc mắc gì về ứng dụng, báo lỗi. Liên hệ với tôi Zalo: 0387290231
 
-        Changelog: 07-10-2023
+        Thông tin thêm tại: https://github.com/lequangkhai06/k-tools-tinh-diem
         """
         textbox.insert("0.0", text)
         textbox.configure(state="disabled")
@@ -306,13 +309,13 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.entry24.insert(0, 0)
 
         ctk.CTkButton(master=self.tab(
-            "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập lại", command=self.func_tinh_diem_tot_nghiep_thpt_reset, image=clearIcon, fg_color="#dc3545", hover_color="#FF0001").grid(row=10, column=0, padx=10)
+            "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="Nhập lại", command=self.func_tinh_diem_tot_nghiep_thpt_reset, image=self.clearIcon, fg_color="#dc3545", hover_color="#FF0001").grid(row=10, column=0, padx=10)
 
         ctk.CTkButton(master=self.tab(
-            "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), image=resultIcon, text="Xem kết quả hệ THPT", command=self.func_tinh_diem_tot_nghiep_thpt).grid(row=10, column=1, padx=10)
+            "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), image=self.resultIcon, text="Xem kết quả hệ THPT", command=self.func_tinh_diem_tot_nghiep_thpt).grid(row=10, column=1, padx=10)
 
         ctk.CTkButton(master=self.tab(
-            "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), image=resultIcon, text="Xem kết quả hệ GDTX", command=self.func_tinh_diem_tot_nghiep_gdtx, fg_color="#0d6efd", hover_color="#0d6efd").grid(row=10, column=2, padx=10)
+            "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), image=self.resultIcon, text="Xem kết quả hệ GDTX", command=self.func_tinh_diem_tot_nghiep_gdtx, fg_color="#0d6efd", hover_color="#0d6efd").grid(row=10, column=2, padx=10)
 
         self.ket_qua_xet_tot_nghiep_thpt = ctk.CTkLabel(master=self.tab(
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="")
@@ -490,10 +493,12 @@ class CongCuTinhDiem(ctk.CTkTabview):
         if self.is_on:
             ctk.set_appearance_mode("Dark")
             self.dark_theme_switch.configure(text="Tối")
+            self.loadImage.configure(image=self.darkIcon)
             self.is_on = False
         else:
             ctk.set_appearance_mode("Light")
             self.dark_theme_switch.configure(text="Sáng")
+            self.loadImage.configure(image=self.lightIcon)
             self.is_on = True
 
     # ========= HÀM XOÁ ĐIỂM ======== #
