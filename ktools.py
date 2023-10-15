@@ -63,11 +63,15 @@ class CongCuTinhDiem(ctk.CTkTabview):
             "TÍNH ĐIỂM XÉT TỐT NGHIỆP"), text="")
         self.label4.grid(row=0, column=0)
         # images
-        self.clearIcon = ctk.CTkImage(dark_image=Image.open("Images/clear.png"))
-        self.resultIcon = ctk.CTkImage(dark_image=Image.open("Images/result.png"))
-        self.offIcon = ctk.CTkImage(dark_image=Image.open("Images/turn-off.png"))
+        self.clearIcon = ctk.CTkImage(
+            dark_image=Image.open("Images/clear.png"))
+        self.resultIcon = ctk.CTkImage(
+            dark_image=Image.open("Images/result.png"))
+        self.offIcon = ctk.CTkImage(
+            dark_image=Image.open("Images/turn-off.png"))
         self.darkIcon = ctk.CTkImage(dark_image=Image.open("Images/night.png"))
-        self.lightIcon = ctk.CTkImage(dark_image=Image.open("Images/cloudy.png"))
+        self.lightIcon = ctk.CTkImage(
+            dark_image=Image.open("Images/cloudy.png"))
         # chuyển theme
         self.is_on = True
         self.lights_control = ctk.CTkFrame(self)
