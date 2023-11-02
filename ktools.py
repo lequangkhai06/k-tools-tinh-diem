@@ -24,7 +24,7 @@ def Loading():
     copyrightText = ctk.CTkLabel(root, text="© 2023 By LEQUANGKHAI",
                                  font=('Arial', 10))
     copyrightText.pack(pady=2, side="bottom")
-    root.after(3000, root.destroy)
+    root.after(2000, root.destroy) # thời gian tải cửa sổ
     root.mainloop()
 
 
@@ -435,12 +435,17 @@ class CongCuTinhDiem(ctk.CTkTabview):
                 diemtn = round(((diem_to_hop+toan+van+ngoai_ngu +
                                  diem_khuyen_khich)/4*7+diem_tb_lop_12*3)/10+diem_uu_tien, 2)
                 if (any(diem <= 1 for diem in [toan, van, ngoai_ngu, mon_phu_1, mon_phu_2, mon_phu_3]) or diemtn < 5):
+                    message = f"""
+                    Bạn đã trượt tốt nghiệp có môn điểm liệt hoặc điểm tốt nghiệp dưới 5!!
+                    Điểm xét tốt nghiệp của bạn là: {diemtn}
+                    """
+
+                    if diemtn < 5:
+                        message += f"Bạn cần ít nhất {round(5-diemtn, 2)} điểm nữa để đỗ tốt nghiệp"
+
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
-                        text=f"""
-                        Bạn đã trượt tốt nghiệp có môn điểm liệt hoặc điểm tốt nghiệp dưới 5!!
-                        Điểm xét tốt nghiệp của bạn là: {diemtn}
-                        Bạn cần ít nhất {round(5-diemtn, 2)} điểm nữa để đỗ tốt nghiệp
-                        """, corner_radius=10, text_color="#dc3545")
+                        text=message, corner_radius=10, text_color="#dc3545")
+
                 else:
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
                         text=f"""
@@ -472,12 +477,16 @@ class CongCuTinhDiem(ctk.CTkTabview):
                 diemtn = round((((diem_to_hop+toan+van)/3 + diem_khuyen_khich/4)
                                 * 7+diem_tb_lop_12*3)/10+diem_uu_tien, 2)
                 if (any(diem <= 1 for diem in [toan, van, ngoai_ngu, mon_phu_1, mon_phu_2, mon_phu_3]) or diemtn < 5):
+                    message = f"""
+                    Bạn đã trượt tốt nghiệp có môn điểm liệt hoặc điểm tốt nghiệp dưới 5!!
+                    Điểm xét tốt nghiệp của bạn là: {diemtn}
+                    """
+
+                    if diemtn < 5:
+                        message += f"Bạn cần ít nhất {round(5-diemtn, 2)} điểm nữa để đỗ tốt nghiệp"
+
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
-                        text=f"""
-                        Bạn đã trượt tốt nghiệp có môn điểm liệt hoặc điểm tốt nghiệp dưới 5!!
-                        Điểm xét tốt nghiệp của bạn là: {diemtn}
-                        Bạn cần ít nhất {round(5-diemtn, 2)} điểm nữa để đỗ tốt nghiệp
-                        """, corner_radius=10, text_color="#dc3545")
+                        text=message, corner_radius=10, text_color="#dc3545")
                 else:
                     self.ket_qua_xet_tot_nghiep_thpt.configure(
                         text=f"""
