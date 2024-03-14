@@ -1,7 +1,7 @@
 ## Phần mềm tính điểm
     Mã nguồn mở Python tính điểm cho học sinh THPT
 
-Xin chào, đây là một phần mềm tính điểm sử dụng Python và thư viện Customtkinter. Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh. Phần mềm này hy vọng sẽ trở thành công cụ hữu ích giúp các bạn dễ dàng tính toán và thống kê điểm số. Ngoài ra, vì là mã nguồn mở nên hi vọng sẽ giúp các bạn phần nào đó trong việc tiếp cận ngôn ngữ lập trình dễ dàng hơn. Nếu còn có bất cứ thắc mắc gì về ứng dụng, báo lỗi vui lòng liên hệ với tôi tại [Facebook](https://facebook.com/100022194791269)
+Xin chào, đây là một phần mềm tính điểm sử dụng Python và thư viện Customtkinter. Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh. Phần mềm này hy vọng sẽ trở thành công cụ hữu ích giúp các bạn dễ dàng tính toán và thống kê điểm số. Ngoài ra, vì là mã nguồn mở nên hi vọng sẽ giúp các bạn phần nào đó trong việc tiếp cận ngôn ngữ lập trình dễ dàng hơn. Nếu còn có bất cứ thắc mắc gì về ứng dụng, báo lỗi vui lòng liên hệ với tôi tại Zalo: 0387290231
 
 ## Chức Năng Chính
     1. Xếp loại học sinh (theo thông tư 22)
@@ -61,13 +61,3 @@ pyinstaller --onefile your_script.py
 Trong đó, `your_script.py` là tên của file Python bạn muốn chuyển đổi. Lệnh trên sẽ tạo ra một file .exe trong thư mục `dist` trong thư mục hiện tại.
 
 Lưu ý: Nếu mã nguồn của bạn sử dụng các thư viện không phải là phần của thư viện chuẩn Python, bạn cần đảm bảo rằng tất cả các thư viện này cũng đã được cài đặt trên máy tính nơi bạn chạy PyInstaller.
-## Tech Stack
-
-***Python - UI (customtkinter)***
-
-
-## Demo
-
-![](https://i.imgur.com/oCW9hEG.png)
-![](https://i.imgur.com/BZ9LhvR.png)
-![](https://i.imgur.com/oCW9hEG.png)
