@@ -1,8 +1,6 @@
 import customtkinter as ctk
 import webbrowser
 from PIL import Image
-
-
 def Loading():
     root = ctk.CTk()
     root.iconbitmap("favico.ico")
@@ -21,13 +19,11 @@ def Loading():
     loadingText = ctk.CTkLabel(root, text="Đang tải dữ liệu...",
                                font=('Arial', 14))
     loadingText.pack(pady=20)
-    copyrightText = ctk.CTkLabel(root, text="© 2023 By LEQUANGKHAI",
+    copyrightText = ctk.CTkLabel(root, text="© 2023, Developed by Khai",
                                  font=('Arial', 10))
     copyrightText.pack(pady=2, side="bottom")
     root.after(2000, root.destroy) # thời gian tải cửa sổ
     root.mainloop()
-
-
 class CongCuTinhDiem(ctk.CTkTabview):
     def __init__(self, master=None, **kwargs):
         super().__init__(master, **kwargs)
@@ -235,7 +231,7 @@ class CongCuTinhDiem(ctk.CTkTabview):
             "VỀ PHẦN MỀM"), width=600, height=300, corner_radius=15)
         text = """
         Xin chào, đây là một phần mềm tính điểm sử dụng Python và thư viện Customtkinter.
-        Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh - Đăk Nông khóa 2021 - 2024.
+        Được phát triển bởi Lê Quang Khải, học sinh trường THPT Trường Chinh - Đăk Nông.
         Phần mềm này hy vọng sẽ trở thành công cụ hữu ích giúp các bạn dễ dàng tính toán, thống kê điểm số. 
         Ngoài ra, vì là mã nguồn mở nên hi vọng sẽ giúp các bạn phần nào đó trong việc tiếp cận ngôn ngữ lập trình dễ dàng hơn. 
 
@@ -326,7 +322,6 @@ class CongCuTinhDiem(ctk.CTkTabview):
         self.ket_qua_xet_tot_nghiep_thpt.grid(row=11, columnspan=2)
 
     # =============== HÀM TÍNH ĐIỂM ================== #
-
     def func_tinh_diem_tb_hoc_ky(self):
         try:
             tong_diem_thuong_xuyen = float(self.entry1.get())
@@ -558,7 +553,7 @@ Loading()
 root = ctk.CTk()
 app = CongCuTinhDiem(master=root)
 copyright_label = ctk.CTkLabel(
-    master=root, text="© 2023 By LEQUANGKHAI", corner_radius=20, cursor="hand2")
+    master=root, text="© 2023, Developed by Khai", corner_radius=20, cursor="hand2")
 copyright_label.pack(side="bottom")
 copyright_label.bind("<Button-1>", lambda e: open_web())
 root.mainloop()
